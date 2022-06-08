@@ -16,11 +16,11 @@ public class Pong1 extends Application {
     private static final double WIDTH = 800;
     private static final double HEIGHT = 600;
     private static final double MARGIN = 50;
-    private static final double ARENAWITDH = WIDTH - 2*MARGIN;
-    private static final double ARENAHEIGHT = HEIGHT - 2*MARGIN;
+    private static final double ARENAWIDTH = WIDTH - 2 * MARGIN;
+    private static final double ARENAHEIGHT = HEIGHT - 2 * MARGIN;
     private static final double ARENAX1 = MARGIN;
     private static final double ARENAY1 = MARGIN;
-    private static final double ARENAX2 = ARENAX1 + ARENAWITDH;
+    private static final double ARENAX2 = ARENAX1 + ARENAWIDTH;
     private static final double ARENAY2 = ARENAY1 + ARENAHEIGHT;
     private static final double R = 10;
 
@@ -29,7 +29,7 @@ public class Pong1 extends Application {
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        Timeline t = new Timeline(new KeyFrame(Duration.millis(100), e-> run(gc)));
+        Timeline t = new Timeline(new KeyFrame(Duration.millis(10), e -> run(gc)));
         t.setCycleCount(Timeline.INDEFINITE);
 
         stage.setTitle("Kulki!");
@@ -44,13 +44,23 @@ public class Pong1 extends Application {
         launch();
     }
 
-    private double x = ARENAX1+ARENAWITDH/2;
+    private double x = ARENAX1+ARENAWIDTH/2;
+    private double y = ARENAY1+ARENAHEIGHT/2;
+
+    private double vx = 5;
+    private double vy = 2;
 
     private void run(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
-        gc.fillRect(ARENAX1, ARENAY1, ARENAWITDH, ARENAHEIGHT);
+        gc.fillRect(ARENAX1, ARENAY1, ARENAWIDTH, ARENAHEIGHT);
 
-        gc.setFill((Color.WHITESMOKE));
-        gc.fillOval(ARENAX1+ARENAWITDH/2,ARENAY1+ARENAHEIGHT/2,2*R, 2*R);
+        if ((x - R <= ARENAX1) || ((x + R >= ARENAX2))) vx = -vx;
+        if ((y - R <= ARENAY1) || ((y + R >= ARENAY2))) vy = -vy;
+
+        x += vx;
+        y += vy;
+
+        gc.setFill(Color.WHITESMOKE);
+        gc.fillOval(x - R, y - R, 2*R, 2*R);
     }
 }
