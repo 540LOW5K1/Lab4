@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.Random;
+
 public class Pong1 extends Application {
 
     private static final double WIDTH = 800;
@@ -32,6 +34,8 @@ public class Pong1 extends Application {
         Timeline t = new Timeline(new KeyFrame(Duration.millis(10), e -> run(gc)));
         t.setCycleCount(Timeline.INDEFINITE);
 
+        initKula();
+
         stage.setTitle("Kulki!");
         stage.setScene(new Scene(new StackPane(canvas)));
         stage.show();
@@ -49,6 +53,14 @@ public class Pong1 extends Application {
 
     private double vx = 5;
     private double vy = 2;
+
+    private void initKula() {
+        Random lott = new Random();
+        x = lott.nextDouble()*ARENAWIDTH+ARENAX1;
+        y = lott.nextDouble()*ARENAHEIGHT+ARENAY1;
+        vx = 5+ lott.nextDouble()*20;
+        vy = 5+ lott.nextDouble()*20;
+    }
 
     private void run(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
