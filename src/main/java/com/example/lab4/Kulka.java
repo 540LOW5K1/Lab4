@@ -1,6 +1,5 @@
 package com.example.lab4;
 
-
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 

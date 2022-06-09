@@ -21,3 +21,4 @@ public class Rugby extends Kulka {
         gc.restore();
     }
 }
+
