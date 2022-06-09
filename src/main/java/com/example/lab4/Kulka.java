@@ -13,6 +13,14 @@ public class Kulka {
     protected Color color;
     protected double radius;
 
+    Kulka(double xPos, double yPos, double xSpeed, double ySpeed) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+        radius = 10;
+        color = Color.WHITESMOKE;
+    }
 
     Kulka(double xPos, double yPos, double xSpeed, double ySpeed, double radius) {
         this.xPos = xPos;
@@ -24,11 +32,9 @@ public class Kulka {
     }
 
     Kulka(double xPos, double yPos, double xSpeed, double ySpeed, double radius, Color color) {
-        this(xPos,yPos,xSpeed,ySpeed,radius);
-        this.color =color;
+        this(xPos, yPos, xSpeed, ySpeed, radius);
+        this.color = color;
     }
-
-
 
     public void checkBoundaryCollision(double xLeft, double yTop, double xRight, double yBottom) {
         if ((xPos - radius <= xLeft) || ((xPos + radius >= xRight))) {
