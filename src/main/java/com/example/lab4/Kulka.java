@@ -6,12 +6,12 @@ import javafx.scene.paint.Color;
 
 public class Kulka {
 
-    private double ySpeed;
-    private double xSpeed;
-    private double xPos;
-    private double yPos;
-    private Color color;
-    private double radius;
+    protected double ySpeed;
+    protected double xSpeed;
+    protected double xPos;
+    protected double yPos;
+    protected Color color;
+    protected double radius;
 
 
     Kulka(double xPos, double yPos, double xSpeed, double ySpeed, double radius) {
